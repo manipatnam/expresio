@@ -1,0 +1,64 @@
+{% load static %}
+{% load socialaccount %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"    content="EXPRESIO TO WRITE AND READ">
+    <meta name="keywords"       content="BLOGS POSTS LIKES COMMENTS SHARES">
+    <meta name="google-site-verification" content="_l4tnHdvYjbaz8-6JU-EdmpZ9upActFWaLFtKcagPDM" />
+    <title>EXPRESIO LOGIN</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <link rel="shortcut icon" type="image/x-icon" href=" {% static 'assets/img/favicon.jpeg' %} ">
+
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="user signinbox">
+                <div class="imagebox"><img src="{% static 'css/images/bgg.jpg' %}" alt=""></div>
+                <div class="formbox">
+                    <form action="login" method="POST">
+                        {% csrf_token %}
+                        <h2>SIGN IN</h2>
+                        <html>
+                            <body>
+                                <div class="col s12 m6 offset-m3 center-align">
+                                    <a href="{% provider_login_url 'google' %}" style="background: white; color: black; " class="btn btn btn-danger btn-lg btn-block" role="button" aria-pressed="true">
+                                        <div class="left">
+                                            <img width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in"
+                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                                        </div>
+                                        Login with Google
+                                    </a>
+                                </div>
+
+                                <!-- Compiled and minified CSS -->
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+                            </body>
+                        </html>
+                        <p class="signup">*LOGIN WITH GOOGLE IS DIFFERNT FROM MANUAL SIGNUP GMAIL</p>
+                        <input type="email" placeholder="Email_Id" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required name="email" >
+                        <input type="password" placeholder="Password" required name="password">
+                        <button type="submit">Login</button>
+                        <p class="signup">Don't have an account <a href="signup">Sign Up</a></p>
+                        <div>
+                        <p class="signup"><a href="/reset_password/">Forgot Password</a></p>
+                        </div>
+                        {% for message in messages%}
+                        <span class="message">{{message}}</span>
+                        {% endfor %}
+                    </form>
+                </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v4.12.4, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.12.4, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href=" {% static 'assets/img/favicon.jpeg' %} ">
+  <meta name="description" content="">
+  
+  
+  <title>POSTS</title>
+  <link rel="stylesheet" href="{% static 'asset/web/assets/mobirise-icons/mobirise-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'asset/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'asset/bootstrap/css/bootstrap-grid.min.css' %}">
+  <link rel="stylesheet" href="{% static 'asset/bootstrap/css/bootstrap-reboot.min.css' %}">
+  <link rel="stylesheet" href="{% static 'asset/tether/tether.min.css' %}">
+  <link rel="stylesheet" href="{% static 'asset/socicon/css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'asset/theme/css/style.css' %}">
+  <link rel="preload" as="style" href="{% static 'asset/mobirise/css/mbr-additional.css' %}"><link rel="stylesheet" href="{% static 'asset/mobirise/css/mbr-additional.css' %}" type="text/css">
+  
+  
+  
+</head>
+<body>
+  <section class="cid-s7ah6Nj1AP" id="footer1-j">
+
+    
+  
+
+    
+
+    <div class="container">
+        <div class="media-container-row content text-white">
+          {%for User  in use %}
+          <div class="col-12 col-md-3 mbr-fonts-style display-7">
+              <h5 class="pb-3">
+                  
+              </h5>
+              <p class="mbr-text">
+                  Hello Friend This is:
+                  <br>{{User.first_name}} {{User.last_name}}
+              </p>
+          </div>
+          <div class="col-12 col-md-3 mbr-fonts-style display-7">
+              <h5 class="pb-3">
+                  Contacts
+              </h5>
+              <p class="mbr-text">
+                  Email: {{User.email}}
+                  <br>
+                  <p class="mbr-text">
+                    <a class="text-primary" href="/">homepage</a>
+                    <br><a class="text-primary" href="/logout">logout</a>
+                </p>
+              </p>
+          </div>
+          
+      </div>
+      {% endfor %}
+
+        </div>
+        <div class="footer-lower">
+          <div class="media-container-row">
+              <div class="col-sm-12">
+                  <hr>
+              </div>
+          </div>
+          <div class="media-container-row mbr-white">
+              <div class="col-sm-6 copyright">
+                  <p class="mbr-text mbr-fonts-style display-7">
+                      Read My Posts And Drop A Like 
+                  </p>
+
+              </div>
+
+              
+          </div>
+      </div>
+</section>
+
+<section class="engine"><a href="https://mobirise.info/e">how to make your own site</a></section><section class="header1 cid-s7abLmFv5U" id="header16-h">
+
+    
+
+    
+  {%for Post  in post %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-10 align-center">
+                <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-5">
+                  {{Post.title}}
+                </h1>
+                
+                <p class="mbr-text pb-3 mbr-fonts-style display-7">
+                  {{Post.content|safe|truncatechars:600}}
+                </p>
+                <br>
+                <p class="mbr-text pb-3 mbr-fonts-style display-7">
+                  Author:{{Post.user.get_full_name}}
+                </p>
+                <br>
+
+                {% if user.is_authenticated %}
+            <div class="mbr-section-btn">
+              <a class="btn btn-md btn-black-outline display-4" href="/{{Post.slug}}/post-detail">
+                <span class="mbri-preview mbr-iconfont mbr-iconfont-btn">
+                </span>READ MORE</a></div>
+          </div>
+          {% else %}
+          <div class="mbr-section-btn">
+            <a class="btn btn-md btn-black-outline display-4" href="/error">
+              <span class="mbri-preview mbr-iconfont mbr-iconfont-btn">
+              </span>LOGIN TO READ MORE</a></div>
+          {% endif %}
+            </div>
+        </div>
+        <hr>
+{% endfor %}
+</section>
+
+
+  <script src="{% static 'asset/web/assets/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'asset/popper/popper.min.js' %}"></script>
+  <script src="{% static 'asset/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'asset/tether/tether.min.js' %}"></script>
+  <script src="{% static 'asset/smoothscroll/smooth-scroll.js'  %}"></script>
+  <script src="{% static 'asset/theme/js/script.js'  %}"></script>
+  
+  
+</body>
+</html>

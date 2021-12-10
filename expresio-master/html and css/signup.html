@@ -1,0 +1,65 @@
+{% load static %}
+{% load socialaccount %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"    content="EXPRESIO TO WRITE AND READ">
+    <meta name="keywords"       content="BLOGS POSTS LIKES COMMENTS SHARES">
+    <title>Expresio SIGNUP</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+  <link rel="shortcut icon" type="image/x-icon" href=" {% static 'assets/img/favicon.jpeg' %} ">
+
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="user signinbox">
+                <div class="imagebox"><img src="{% static 'css/images/bgg.jpg' %}" alt=""></div>
+                <div class="formbox">
+                    <form action="signup" method="POST">
+                        {% csrf_token %}
+                        <h2>SIGN UP</h2>
+                            <html>
+                            <body>
+                                <div class="col s12 m6 offset-m3 center-align">
+                                    <a href="{% provider_login_url 'google' %}" style="background: white; color: black; " class="btn btn btn-danger btn-lg btn-block" role="button" aria-pressed="true">
+                                        <div class="left">
+                                            <img width="20px" style="margin-top:7px; margin-right:8px" alt="Google sign-in"
+                                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                                        </div>
+                                        SignUp with Google
+                                    </a>
+                                </div>
+
+                                <!-- Compiled and minified CSS -->
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+                            </body>
+                        </html>
+                        <input type="text" placeholder="UserName"  required name="username">
+                        <input type="text" placeholder="Name" onkeyup="letters(this)" required name="first">
+                        <input type="text" placeholder="LastName" onkeyup="letters(this)"  name="last" hidden readonly>
+                        <input type="email" placeholder="Email_Id" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required name="email"  name="email">
+                        <button type="submit">Signup</button>
+                            {% for message in messages%}
+                            <span class="message">{{message}}</span>
+                            {% endfor %}
+
+                        <p class="signup">login and enjoy reading <a href="login">LOGIN</a></p>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <script>
+
+        function letters(letters){
+            var regex = /[^a-z]/gi;
+            letters.value = letters.value.replace(regex,"");
+        }
+
+    </script>
+</body>
+</html>
